@@ -30,3 +30,14 @@ println!("{:?}", alphabets("aardvark")); -> (true, false)
 println!("{:?}", alphabets("zoology"));  -> (false, true)
 println!("{:?}", alphabets("zebra"));    -> (true, true)
 */
+pub fn apply_to_jobs(number: i32, title: &str) {
+    println!("I am applying to {number} {title} job");
+}
+
+pub fn is_even(number: i32) -> bool {
+    number % 2 == 0
+}
+
+pub fn alphabets(text: &str) -> (bool, bool) {
+    (text.contains("a"), text.contains("z"))
+}

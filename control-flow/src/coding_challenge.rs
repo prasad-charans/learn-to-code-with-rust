@@ -27,3 +27,43 @@ Implement two solutions/functions for the problem.
 The first solution should not use recursion.
 The second solution should use recursion.
 */
+
+pub fn color_to_number(color: &str) -> i8 {
+    if color == "red" {
+        return 1;
+    } else if color == "green" {
+        return 2;
+    } else if color == "blue" {
+        return 3;
+    } else {
+        return 0;
+    }
+}
+
+pub fn color_to_number_match(color: &str) -> i8 {
+    match color {
+        "red" => 1,
+        "green" => 2,
+        "blue" => 3,
+        _ => 0,
+    }
+}
+
+pub fn factorial_iterative(n: i32) -> i64 {
+    let mut product: i64 = 1;
+    let mut count = n;
+
+    while count > 0 {
+        product *= count as i64;
+        count -= 1;
+    }
+
+    product
+}
+
+pub fn factorial_recursive(n: i32) -> i64 {
+    if n == 1 {
+        return 1;
+    }
+    n as i64 * factorial_recursive(n - 1) as i64
+}
