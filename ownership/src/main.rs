@@ -1,7 +1,9 @@
 mod coding_challenge_1;
+mod coding_challenge_2;
 use std::mem::size_of;
 
 use crate::coding_challenge_1::*;
+use crate::coding_challenge_2::*;
 
 fn main() {
     let age = 45;
@@ -94,10 +96,25 @@ fn main() {
     println!("I now have a {cake} cake.");
 
     let mut current_meal = String::new();
-    current_meal = add_flour(current_meal);
-    println!("Current meal : {}", current_meal);
+    println!("current meal, {:p}", current_meal.as_ptr());
+    add_flour(&mut current_meal);
+    println!("current meal, {:p}", current_meal.as_ptr());
+    show_my_meal(&current_meal);
+    println!("current meal, {:p}", current_meal.as_ptr());
 
     challenge_1();
+
+    let car = String::from("Red");
+    let ref1 = &car;
+    let ref2 = &car;
+    println!("Car color is {ref1} and {ref2} and {}", &car);
+
+    let coffee = String::from("Mocha");
+    let a = &coffee;
+    let b = a;
+    println!("Coffee is {a} and {b} and {}", &coffee);
+
+    coding_challenge_2();
 }
 
 fn print_my_value(value: i32) {
@@ -118,7 +135,10 @@ fn bake_cake() -> String {
     return cake;
 }
 
-fn add_flour(mut meal: String) -> String {
-    meal.push_str("Add Flour");
-    meal
+fn add_flour(meal: &mut String) {
+    meal.push_str("Add Flour")
+}
+
+fn show_my_meal(meal: &String) {
+    println!("Meal Steps: {meal}");
 }
