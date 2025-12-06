@@ -1,3 +1,6 @@
+mod coding_challenge;
+use crate::coding_challenge::*;
+
 #[derive(Debug)]
 enum CardSuite {
     Hearts,
@@ -198,6 +201,8 @@ fn main() {
     if let Milk::NonDiary { kind } = my_another_milk {
         println!("Your milk is {kind}")
     }
+
+    coding_challenge();
 
     let whole_beverage = Milk::Whole;
     let Milk::Lowfat(percent) = whole_beverage else {
