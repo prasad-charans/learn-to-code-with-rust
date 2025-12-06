@@ -1,3 +1,5 @@
+mod coding_challenge;
+use crate::coding_challenge::*;
 use chrono::{Datelike, Utc};
 
 #[derive(Debug)]
@@ -84,7 +86,8 @@ struct ShortDuration(u32, u32);
 struct LongDuration(u32, u32);
 
 //Unit struct
-struct Empty();
+#[derive(Debug)]
+struct Empty;
 
 fn main() {
     let mut beverage = Coffee {
@@ -171,7 +174,9 @@ fn main() {
     println!("{} years {} months", era.0, era.1);
 
     let my_empty_struct = Empty;
-    println!("Empty struct {}", my_empty_struct);
+    println!("Empty struct {:?}", my_empty_struct);
+
+    coding_challenge();
 }
 
 fn make_coffee(name: String, price: f64, is_hot: bool) -> Coffee {
