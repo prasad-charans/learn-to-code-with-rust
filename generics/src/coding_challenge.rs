@@ -35,3 +35,55 @@ ChatMessage storing a DigitalContent enum.
 Invoke the `retrieve_time` method on all 3 ChatMessage
 instances and print out each String's content.
 */
+
+#[derive(Debug)]
+enum DigitalContent {
+    AudioFile,
+    VideoFile,
+}
+
+#[derive(Debug)]
+struct ChatMessage<T> {
+    content: T,
+    time: String,
+}
+
+impl ChatMessage<DigitalContent> {
+    fn consume_entertainment(&self) {
+        println!("Consuming entertainment: {:?}", self.content);
+    }
+}
+
+impl<T> ChatMessage<T> {
+    fn retrieve_time(&self) -> String {
+        self.time.clone()
+    }
+}
+
+pub fn coding_challenge() {
+    let message = ChatMessage {
+        content: "Hi, Lol",
+        time: String::from("2025-12-06 22:03:43"),
+    };
+    println!("{:?}", message.retrieve_time());
+
+    let notification = ChatMessage {
+        content: String::from("What's your favourite pizza toppings"),
+        time: String::from("2025-12-06 22:04:12"),
+    };
+    println!("{:?}", notification.retrieve_time());
+
+    let audio_message = ChatMessage {
+        content: DigitalContent::AudioFile,
+        time: String::from("2025-12-06 22:05:12"),
+    };
+    audio_message.consume_entertainment();
+    println!("{:?}", audio_message.retrieve_time());
+
+    let video_message = ChatMessage {
+        content: DigitalContent::VideoFile,
+        time: String::from("2025-12-06 22:06:12"),
+    };
+    video_message.consume_entertainment();
+    println!("{:?}", video_message.retrieve_time());
+}
