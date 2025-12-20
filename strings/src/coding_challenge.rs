@@ -35,3 +35,45 @@ fn main() {
    println!("{name}"); // Bill Murray
 }
 */
+
+fn make_money(s: &mut String) {
+    s.push_str("$$$");
+}
+
+fn trim_and_capitalize(text: &str) -> String {
+    text.trim().to_uppercase()
+}
+
+fn elements(text: &str) -> Vec<&str> {
+    text.split("!").collect::<Vec<&str>>()
+}
+
+fn get_identity() -> String {
+    let mut first_name = String::new();
+    let mut last_name = String::new();
+    let input = std::io::stdin();
+    println!("Enter your first name: ");
+    input
+        .read_line(&mut first_name)
+        .expect("Failed to collect first name");
+    println!("Enter your last name: ");
+    input
+        .read_line(&mut last_name)
+        .expect("Failed to collect last name");
+    format!("{} {}", first_name.trim(), last_name.trim())
+}
+
+pub fn challenge() {
+    let mut amount = String::from("100");
+    make_money(&mut amount);
+    println!("{}", amount);
+
+    let text = trim_and_capitalize("   Hello World   ");
+    println!("{}", text);
+
+    let precious = elements("Gold!Silver!Platinum");
+    println!("{:?}", precious);
+
+    let identity = get_identity();
+    println!("{}", identity);
+}
