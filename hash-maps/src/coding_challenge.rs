@@ -41,3 +41,28 @@ The final result should be:
   "Mustard": ["Hot dog", "Burgers", "Pretzels"]
 }
 */
+
+use std::collections::HashMap;
+
+pub fn coding_challenge() {
+    let mut sauces_to_meals = HashMap::from([
+        ("Ketchup", vec!["French Fries", "Burgers", "Hot Dogs"]),
+        ("Mayonnaise", vec!["Sandwiches", "Burgers", "Coleslaw"]),
+    ]);
+
+    sauces_to_meals.insert("Mustard", vec!["Hot dog", "Burgers", "Pretzels"]);
+    println!("{:?}", sauces_to_meals);
+
+    println!("{:?}", sauces_to_meals.remove("Mayonnaise").unwrap());
+
+    let mustard_meals = sauces_to_meals.get("Mustard");
+    match mustard_meals {
+        Some(meals) => println!("{:?}", meals),
+        None => println!("Mustard not found"),
+    }
+
+    sauces_to_meals
+        .entry("Soy Sauce")
+        .or_insert(vec!["Sushi", "Dumplings"]);
+    println!("{:?}", sauces_to_meals);
+}
